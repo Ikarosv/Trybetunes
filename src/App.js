@@ -4,6 +4,7 @@ import Album from './pages/Album';
 import Favorites from './pages/Favorites';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import ProfileEdit from './pages/ProfileEdit';
 import Search from './pages/Search';
 
 class App extends React.Component {
@@ -35,6 +36,11 @@ class App extends React.Component {
             exact
             path="/profile"
             render={ () => <Profile /> }
+          />
+          <Route
+            exact
+            path="/profile/edit"
+            render={ () => <ProfileEdit /> }
           />
         </Switch>
       </BrowserRouter>
