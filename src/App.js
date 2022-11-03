@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Album from './pages/Album';
 import Favorites from './pages/Favorites';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import Search from './pages/Search';
 
 class App extends React.Component {
@@ -29,6 +30,11 @@ class App extends React.Component {
             exact
             path="/favorites"
             render={ () => <Favorites /> }
+          />
+          <Route
+            exact
+            path="/profile"
+            render={ () => <Profile /> }
           />
         </Switch>
       </BrowserRouter>
