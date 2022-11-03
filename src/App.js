@@ -16,7 +16,7 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={ () => <Login /> }
+            render={ ({ history }) => <Login history={ history } /> }
           />
           <Route
             exact
