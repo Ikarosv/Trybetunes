@@ -15,14 +15,16 @@ export default class MusicCard extends Component {
 
   favoriteSong = async ({ target }) => {
     const { checked } = target;
+    const { attFavorite, trackId } = this.props;
     this.setState({
       check: checked,
     });
     this.setState({ loading: true });
     if (checked) {
-      await addSong(this.props);
+      await addSong({ ...this.props, isFavorite: true });
     } else {
-      await removeSong(this.props);
+      await removeSong({ ...this.props, isFavorite: false });
+      attFavorite(trackId);
     }
     this.setState({ loading: false });
   };
@@ -43,6 +45,7 @@ export default class MusicCard extends Component {
         </audio>
         {loading ? <Loading /> : (
           <label htmlFor="favorite">
+            Favorita
             <input
               id="favorite"
               type="checkbox"
@@ -63,3 +66,11 @@ MusicCard.propTypes = {
   trackId: PropTypes.number,
   isFavorite: PropTypes.bool,
 }.isRequired;
+
+MusicCard.propTypes = {
+  attFavorite: PropTypes.func,
+};
+
+MusicCard.defaultProps = {
+  attFavorite: () => {},
+};
