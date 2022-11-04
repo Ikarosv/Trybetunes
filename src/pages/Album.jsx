@@ -6,15 +6,13 @@ import MusicCard from '../components/MusicCard';
 
 export default class Album extends Component {
   state = {
-    albumInfo: '',
+    albumInfo: {},
     musics: [],
   };
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const [albumInfo, ...musics] = await getMusics(id);
-    console.log(albumInfo);
-    console.log(musics);
     this.setState({
       albumInfo,
       musics,
