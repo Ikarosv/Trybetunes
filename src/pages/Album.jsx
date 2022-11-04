@@ -3,24 +3,28 @@ import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 export default class Album extends Component {
   state = {
     albumInfo: {},
     musics: [],
+    favoritesSongs: {},
   };
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const [albumInfo, ...musics] = await getMusics(id);
+    const favoritesSongs = await getFavoriteSongs();
     this.setState({
       albumInfo,
       musics,
+      favoritesSongs,
     });
   }
 
   render() {
-    const { albumInfo, musics } = this.state;
+    const { albumInfo, musics, favoritesSongs } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -30,9 +34,16 @@ export default class Album extends Component {
         </section>
         <section>
           {
-            musics.map((music, index) => (
-              <MusicCard key={ music.trackName + index } { ...music } />
-            ))
+            musics.map((music, index) => {
+              const favorite = !!favoritesSongs
+                .find((song) => song.trackId === music.trackId);
+
+              return (<MusicCard
+                key={ music.trackName + index }
+                isFavorite={ favorite }
+                { ...music }
+              />);
+            })
           }
         </section>
       </div>
