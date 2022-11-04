@@ -41,7 +41,7 @@ class App extends React.Component {
           <Route
             exact
             path="/profile/edit"
-            render={ () => <ProfileEdit /> }
+            render={ ({ history }) => <ProfileEdit history={ history } /> }
           />
           <Route
             render={ () => <NotFound /> }
