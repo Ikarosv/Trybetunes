@@ -4,10 +4,14 @@ import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 export default class MusicCard extends Component {
-  state = {
-    check: false,
-    loading: false,
-  };
+  constructor(props) {
+    super(props);
+    const { isFavorite } = props;
+    this.state = {
+      check: isFavorite,
+      loading: false,
+    };
+  }
 
   favoriteSong = async ({ target }) => {
     const { checked } = target;
@@ -24,7 +28,7 @@ export default class MusicCard extends Component {
   };
 
   render() {
-    const { trackName, previewUrl, trackId, isFavorite } = this.props;
+    const { trackName, previewUrl, trackId } = this.props;
     const { check, loading } = this.state;
     return (
       <section>
@@ -42,7 +46,7 @@ export default class MusicCard extends Component {
             <input
               id="favorite"
               type="checkbox"
-              checked={ check || isFavorite }
+              checked={ check }
               data-testid={ `checkbox-music-${trackId}` }
               onChange={ this.favoriteSong }
             />
@@ -57,4 +61,5 @@ MusicCard.propTypes = {
   trackName: PropTypes.string,
   previewUrl: PropTypes.string,
   trackId: PropTypes.number,
+  isFavorite: PropTypes.bool,
 }.isRequired;

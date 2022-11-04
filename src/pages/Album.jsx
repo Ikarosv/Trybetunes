@@ -23,6 +23,13 @@ export default class Album extends Component {
     });
   }
 
+  async componentDidUpdate() {
+    const favoritesSongs = await getFavoriteSongs();
+    this.setState({
+      favoritesSongs,
+    });
+  }
+
   render() {
     const { albumInfo, musics, favoritesSongs } = this.state;
     return (
