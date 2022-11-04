@@ -51,8 +51,8 @@ export default class Search extends Component {
               {artistSearched}
             </h3>
             {
-              albums.map((infos) => (
-                <section key={ infos.artistId }>
+              albums.map((infos, index) => (
+                <section key={ `${infos.artistId}+${index}` }>
                   <img src={ infos.artworkUrl100 } alt={ infos.collectionName } />
                   <h6>{infos.collectionName}</h6>
                   <Link
