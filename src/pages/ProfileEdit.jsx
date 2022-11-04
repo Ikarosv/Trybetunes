@@ -16,7 +16,7 @@ export default class ProfileEdit extends Component {
     this.setState({
       loading: false,
       userInfos,
-    });
+    }, this.setIsDisabled);
   }
 
   isEmpty = (...states) => !states.every((actual) => actual.length);
@@ -25,12 +25,14 @@ export default class ProfileEdit extends Component {
     const { name: inputName, value } = target;
     this.setState(({ userInfos }) => ({
       userInfos: { ...userInfos, [inputName]: value },
-    }), () => {
-      const { userInfos } = this.state;
-      const { name, email, image, description } = userInfos;
-      this.setState({
-        isDisabled: this.isEmpty(name, email, image, description),
-      });
+    }), this.setIsDisabled);
+  };
+
+  setIsDisabled = () => {
+    const { userInfos } = this.state;
+    const { name, email, image, description } = userInfos;
+    this.setState({
+      isDisabled: this.isEmpty(name, email, image, description),
     });
   };
 
@@ -39,7 +41,6 @@ export default class ProfileEdit extends Component {
     const { history } = this.props;
     this.setState({ loading: true });
     await updateUser(userInfos);
-    this.setState({ loading: false });
     history.push('/profile');
   };
 
