@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
+import Lines from '../components/styles/styledComponents/Lines';
+import '../components/styles/scss/Login.scss';
+import Logo from '../components/Logo';
 
 const MIN_LENGTH_NAME = 3;
-
+const COLOR_LINES_TOP_LEFT = '#00D5E2';
+const COLOR_LINES_BOTTOM_RIGHT = '#003BE5';
 export default class Login extends Component {
   state = {
     name: '',
@@ -36,14 +40,15 @@ export default class Login extends Component {
   render() {
     const { name, disabled, loading } = this.state;
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="loginPage bgGradient align-justify-center">
         {
           loading ? <Loading /> : (
-            <form>
+            <form className="form-login align-justify-center">
+              <Logo />
               <input
                 type="text"
                 data-testid="login-name-input"
-                placeholder="Nome"
+                placeholder="qual é o seu nome?"
                 name="name"
                 value={ name }
                 onChange={ this.handleChange }
@@ -60,6 +65,19 @@ export default class Login extends Component {
             </form>
           )
         }
+
+        <Lines
+          className="max-height top-left"
+          blur
+          lineColor={ COLOR_LINES_TOP_LEFT }
+        />
+        <Lines
+          className="max-height bottom-right"
+          blur
+          lineColor={ COLOR_LINES_BOTTOM_RIGHT }
+        />
+        <span className="big-outlined-circle full-bottom-left" />
+        <span className="big-filled-circle top-right" />
       </div>
     );
   }
