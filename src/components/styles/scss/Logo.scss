@@ -1,0 +1,26 @@
+.logo {
+  max-width: 160px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  font-size: 30pt;
+  font-weight: 700;
+
+  .trybe-logo {
+    width: 100%;
+    text-align: start;
+    .trybe {
+      color: #00D5E2;
+      margin-right: 10px;
+    }
+    .line-group {
+      height: 34.69px;
+    }
+  }
+  .tunes {
+    text-align: end;
+    color: #003BE5;
+    font-weight: 400;
+  }
+}

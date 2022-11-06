@@ -1,0 +1,21 @@
+.line-group {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 0;
+  gap: 62px;
+  .line {
+    width: 14px;
+    border-radius: 10px;
+  }
+  .line:nth-child(1), .line:nth-child(4) {
+    height: 45.54%;
+  }
+  .line:nth-child(2) {
+    height: 74.10%;
+  }
+  .line:nth-child(3) {
+    height: 100%;
+  }
+}
+
