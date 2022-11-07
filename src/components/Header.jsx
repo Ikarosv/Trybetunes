@@ -61,10 +61,12 @@ export default class Header extends Component {
         </nav>
         {
           loading ? <Loading col={ false } /> : (
-            <h5 data-testid="header-user-name">{user.name}</h5>
+            <div className="userInfos">
+              <img src={ user.image } alt={ user.name } />
+              <h5 data-testid="header-user-name">{user.name}</h5>
+            </div>
           )
         }
-        {/* <Loading col={ false } /> */}
       </header>
     );
   }
