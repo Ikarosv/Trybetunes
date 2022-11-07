@@ -1,5 +1,5 @@
 .logo {
-  max-width: 160px;
+  max-width: 180px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,11 @@
   }
   .tunes {
     text-align: end;
+    max-width: 130px;
+    width: 100%;
     color: #003BE5;
+    align-self: flex-end;
+    text-align: start;
     font-weight: 400;
   }
 }

@@ -18,8 +18,8 @@ export default class MusicCard extends Component {
     const { attFavorite, trackId } = this.props;
     this.setState({
       check: checked,
+      loading: true,
     });
-    this.setState({ loading: true });
     if (checked) {
       await addSong({ ...this.props, isFavorite: true });
     } else {
