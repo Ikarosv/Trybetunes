@@ -55,4 +55,15 @@ $COLOR_BLUE: #003BE5;
 
 .max-height {
   height: 224px;
+  animation: song 1.5s linear 0s infinite alternate;
+}
+
+@keyframes song {
+  from {
+    height: 224px;
+  }
+
+  to {
+    height: 100px;
+  }
 }

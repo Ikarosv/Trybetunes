@@ -1,0 +1,30 @@
+.Loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  img {
+    max-height: 61px;
+    height: 100%;
+    animation: toRotate 2s linear 0s infinite;
+  }
+
+  h2 {
+    font-family: Epilogue , sans-serif;
+    font-weight: 400;
+  }
+}
+
+.Column {
+  flex-direction: column;
+}
+
+@keyframes toRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -43,7 +43,10 @@ export default class Login extends Component {
       <div data-testid="page-login" className="loginPage bgGradient align-justify-center">
         {
           loading ? <Loading /> : (
-            <form className="form-login align-justify-center">
+            <form
+              className="form-login align-justify-center"
+              onSubmit={ this.handleClick }
+            >
               <Logo />
               <input
                 type="text"
@@ -65,7 +68,6 @@ export default class Login extends Component {
             </form>
           )
         }
-
         <Lines
           className="max-height top-left"
           blur

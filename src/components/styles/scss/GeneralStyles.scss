@@ -35,9 +35,38 @@ $bg_gradient: linear-gradient(153deg, rgba(1,69,229,1) 0%, rgba(87,168,252,1) 78
   border-radius: 100%;
   background: #003BE5;
   filter: blur(35.5px);
+  animation: ping 10s linear 0s infinite alternate;
+}
+
+@keyframes ping {
+  0% {
+    top: -74px;
+    right: 40px;
+  }
+
+  25% {
+    top: 80%;
+    right: 80%;
+  }
+
+  50% {
+    top: 10%;
+    right: 70%;
+  }
+
+  75% {
+    top: 80%;
+    right: 40%;
+  }
+
+  100% {
+    top: -74px;
+    right: 40px;
+  }
 }
 
 .top-right {
+  position: absolute;
   top: -74px;
   right: 40px;
 }

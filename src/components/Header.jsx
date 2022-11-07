@@ -23,7 +23,7 @@ export default class Header extends Component {
     return (
       <header data-testid="header-component">
         {
-          loading ? <Loading /> : (
+          loading ? <Loading col={ false } /> : (
             <h5 data-testid="header-user-name">{user.name}</h5>
           )
         }

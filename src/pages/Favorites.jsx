@@ -14,10 +14,6 @@ export default class Favorites extends Component {
     await this.loadFavoritesSongs();
   }
 
-  async componentDidUpdate() {
-    // await this.loadFavoritesSongs();
-  }
-
   setLoading = (isActive) => {
     this.setState({ loading: isActive });
   };
