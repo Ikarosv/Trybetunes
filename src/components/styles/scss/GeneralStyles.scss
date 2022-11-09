@@ -1,5 +1,7 @@
 $bg_color: rgb(1,69,229);
 $bg_gradient: linear-gradient(153deg, rgba(1,69,229,1) 0%, rgba(87,168,252,1) 78%, rgba(98,185,255,1) 100%);;
+$bg_gradient_inverted: linear-gradient(-153deg, rgba(1,69,229,1) 0%, rgba(87,168,252,1) 78%, rgba(98,185,255,1) 100%);;
+
 
 body {
   background-color: #EFF3F9;
@@ -15,6 +17,11 @@ body {
 .bgGradient {
   background: $bg_color;
   background: $bg_gradient;
+}
+
+.bgGradientInverted {
+  background: $bg_gradient_inverted;
+  background-color: $bg_color;
 }
 
 .horizontalHeader {
@@ -115,7 +122,7 @@ body {
 }
 
 .animated {
-  animation: song 0.7s linear 0s infinite alternate;
+  animation: song 0.5s linear 0s infinite alternate;
 }
 
 .top-right-splited {

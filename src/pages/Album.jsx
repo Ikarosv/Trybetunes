@@ -5,7 +5,10 @@ import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import '../components/styles/scss/Album.scss';
+import Lines from '../components/styles/styledComponents/Lines';
 
+const COLOR_LINES_TOP_LEFT = '#00D5E2';
+const COLOR_LINES_BOTTOM_RIGHT = '#003BE5';
 export default class Album extends Component {
   state = {
     albumInfo: {},
@@ -37,11 +40,21 @@ export default class Album extends Component {
       <div data-testid="page-album">
         <Header />
         <section className="albumPage">
-          <section className="horizontalHeader bgGradient">
+          <section className="horizontalHeader bgGradientInverted">
             <img
               className="artistImage"
               src={ albumInfo.artworkUrl100 }
               alt={ albumInfo.artistName }
+            />
+            <Lines
+              className="max-height-and-width bottom-right"
+              blur
+              lineColor={ COLOR_LINES_TOP_LEFT }
+            />
+            <Lines
+              className="max-height-and-width top-left"
+              blur
+              lineColor={ COLOR_LINES_BOTTOM_RIGHT }
             />
             <div>
               <h2

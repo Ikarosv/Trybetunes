@@ -16,6 +16,8 @@
       left: 77px;
       width: 240px;
       border-radius: 12px;
+      z-index: 1;
+      filter: drop-shadow(-9px 8px 8px rgba(68, 73, 85, 0.2));
     }
     .albumName {
       font-weight: 700;
