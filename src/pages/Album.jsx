@@ -73,7 +73,7 @@ export default class Album extends Component {
               </h3>
             </div>
           </section>
-          <section className="Musics">
+          <section className="Musics myMusics">
             {
               musics.map((music) => {
                 const favorite = favoritesSongs
