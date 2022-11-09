@@ -5,6 +5,7 @@ $COLOR_HEART: #EC5050;
   align-items: center;
   position: relative;
   width: 100%;
+  padding: 18px 30px;
   justify-content: space-between;
   max-width: 591px;
   font-family: Epilogue , sans-serif;
@@ -58,6 +59,12 @@ $COLOR_HEART: #EC5050;
       width: 22px;
       margin: 0;
     }
+  }
+}
+
+.myMusics {
+  .MusicCard:not(:last-child) {
+    border-bottom: 1px solid #CCD4E1;
   }
 }
 
