@@ -1,0 +1,15 @@
+.pageFavorites {
+  font-family: Epilogue , sans-serif;
+  .horizontalHeader {
+    color: white;
+    font-weight: 700;
+  }
+  
+  .favoritesMusics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 0;
+    width: 100%;
+  }
+}
