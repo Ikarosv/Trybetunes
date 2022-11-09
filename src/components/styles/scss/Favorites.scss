@@ -3,6 +3,9 @@
   .horizontalHeader {
     color: white;
     font-weight: 700;
+    h1 {
+      z-index: 2;
+    }
   }
   
   .favoritesMusics {
