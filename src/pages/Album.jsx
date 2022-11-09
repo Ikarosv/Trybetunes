@@ -60,11 +60,11 @@ export default class Album extends Component {
               </h3>
             </div>
           </section>
-          <section>
+          <section className="Musics">
             {
               musics.map((music) => {
-                const favorite = !!favoritesSongs
-                  .find((song) => song.trackId === music.trackId);
+                const favorite = favoritesSongs
+                  .some((song) => song.trackId === music.trackId);
                 return (<MusicCard
                   key={ music.trackId }
                   isFavorite={ favorite }
