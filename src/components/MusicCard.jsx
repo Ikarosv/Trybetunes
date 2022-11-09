@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Coracao } from '../assets/images/Exportation';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import './styles/scss/MusicCard.scss';
 
 export default class MusicCard extends Component {
   constructor(props) {
@@ -33,7 +35,7 @@ export default class MusicCard extends Component {
     const { trackName, previewUrl, trackId } = this.props;
     const { check, loading } = this.state;
     return (
-      <section>
+      <section className="MusicCard">
         <h6>{trackName}</h6>
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
@@ -43,18 +45,18 @@ export default class MusicCard extends Component {
           <code>audio</code>
           .
         </audio>
-        {loading ? <Loading /> : (
-          <label htmlFor="favorite">
-            Favorita
-            <input
-              id="favorite"
-              type="checkbox"
-              checked={ check }
-              data-testid={ `checkbox-music-${trackId}` }
-              onChange={ this.favoriteSong }
-            />
-          </label>
-        )}
+        <label className="inputCoracao" htmlFor={ trackId }>
+          <input
+            id={ trackId }
+            type="checkbox"
+            checked={ check }
+            data-testid={ `checkbox-music-${trackId}` }
+            onChange={ this.favoriteSong }
+          />
+          <Coracao />
+        </label>
+        {loading && <Loading col={ false } /> }
+        {/* <Loading col={ false } /> */}
       </section>
     );
   }
