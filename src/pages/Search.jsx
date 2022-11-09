@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import { Search as SvgSearch, Error as NotFound } from '../assets/images/Exportation';
+import Lines from '../components/styles/styledComponents/Lines';
+import '../components/styles/scss/Search.scss';
 
+const COLOR_LINES_TOP_LEFT = '#00D5E2';
+const COLOR_LINES_BOTTOM_RIGHT = '#003BE5';
 const MIN_LENGTH_NAME = 2;
 export default class Search extends Component {
   state = {
@@ -43,27 +48,37 @@ export default class Search extends Component {
     const { albums, artistSearched } = this.state;
     this.setState({
       result: (
-        !(albums.length) ? <h1>Nenhum álbum foi encontrado</h1> : (
-          <section>
+        !(albums.length) ? (
+          <div className="Error">
+            <NotFound />
+            <h1>Nenhum álbum foi encontrado</h1>
+          </div>
+        ) : (
+          <section className="all-results">
             <h3>
-              Resultado de álbuns de:
+              Resultado de álbuns de
               {' '}
               {artistSearched}
+              :
             </h3>
-            {
-              albums.map((infos, index) => (
-                <section key={ `${infos.artistId}+${index}` }>
-                  <img src={ infos.artworkUrl100 } alt={ infos.collectionName } />
-                  <h6>{infos.collectionName}</h6>
+            <section className="Results">
+              {
+                albums.map((infos) => (
                   <Link
+                    key={ `${infos.trackId}` }
                     to={ `/album/${infos.collectionId}` }
                     data-testid={ `link-to-album-${infos.collectionId}` }
+                    className="Card"
                   >
-                    Ver Álbum
+                    <section>
+                      <img src={ infos.artworkUrl100 } alt={ infos.collectionName } />
+                      <h6>{infos.collectionName}</h6>
+                      <span>{infos.artistName}</span>
+                    </section>
                   </Link>
-                </section>
-              ))
-            }
+                ))
+              }
+            </section>
           </section>
         )),
     });
@@ -85,34 +100,53 @@ export default class Search extends Component {
   render() {
     const { artistName, disabled, loading, result } = this.state;
     return (
-      <div data-testid="page-search">
+      <div className="pageSearch" data-testid="page-search">
         <Header />
-        {
-          loading ? <Loading /> : (
+        <section>
+          <div className="searchForm bgGradient">
             <form onSubmit={ this.handleSearch }>
-              <input
-                type="text"
-                name="artistName"
-                value={ artistName }
-                onChange={ this.handleChange }
-                data-testid="search-artist-input"
-                placeholder="Nome do Artista"
-              />
+              <label htmlFor="search">
+                {/* eslint-disable-next-line react/jsx-max-depth */}
+                <input
+                  type="text"
+                  id="search"
+                  name="artistName"
+                  value={ artistName }
+                  onChange={ this.handleChange }
+                  data-testid="search-artist-input"
+                  placeholder="Nome do Artista"
+                />
+                {/* eslint-disable-next-line react/jsx-max-depth */}
+                <SvgSearch />
+              </label>
               <button
                 type="submit"
                 data-testid="search-artist-button"
                 disabled={ disabled }
                 onClick={ this.handleSearch }
               >
-                Pesquisar
-
+                Procurar
               </button>
             </form>
-          )
-        }
-        {
-          result
-        }
+            <Lines
+              className="max-height-and-width top-left animated"
+              blur
+              lineColor={ COLOR_LINES_TOP_LEFT }
+            />
+            <Lines
+              className="max-height-and-width bottom-right-splited animated"
+              blur
+              lineColor={ COLOR_LINES_BOTTOM_RIGHT }
+            />
+            <span className="big-filled-circle" />
+            <span className="big-outlined-circle top-right-splited" />
+          </div>
+          <div className="w-100 align-justify-center">
+            {
+              loading ? <Loading /> : result
+            }
+          </div>
+        </section>
       </div>
     );
   }

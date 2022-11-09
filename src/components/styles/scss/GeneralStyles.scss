@@ -1,6 +1,10 @@
 $bg_color: rgb(1,69,229);
 $bg_gradient: linear-gradient(153deg, rgba(1,69,229,1) 0%, rgba(87,168,252,1) 78%, rgba(98,185,255,1) 100%);;
 
+body {
+  background-color: #EFF3F9;
+}
+
 @font-face {
   font-family: Epilogue;
   font-weight: 100 1000;
@@ -11,6 +15,10 @@ $bg_gradient: linear-gradient(153deg, rgba(1,69,229,1) 0%, rgba(87,168,252,1) 78
 .bgGradient {
   background: $bg_color;
   background: $bg_gradient;
+}
+
+.h-100 {
+  height: 100%;
 }
 
 .align-justify-center {
@@ -81,6 +89,11 @@ $bg_gradient: linear-gradient(153deg, rgba(1,69,229,1) 0%, rgba(87,168,252,1) 78
   bottom: 25px;
 }
 
+.bottom-right-splited {
+  right: 3%;
+  bottom: -30%;
+}
+
 .full-bottom-left {
   left: -386px;
   top: 402px;
@@ -89,4 +102,23 @@ $bg_gradient: linear-gradient(153deg, rgba(1,69,229,1) 0%, rgba(87,168,252,1) 78
 .flex-align-end {
   display: flex;
   align-items: flex-end;
+}
+
+.animated {
+  animation: song 0.7s linear 0s infinite alternate;
+}
+
+.top-right-splited {
+  right: -40%;
+  top: -250%;
+}
+
+@keyframes song {
+  from {
+    height: 100%;
+  }
+
+  to {
+    height: 30%;
+  }
 }
