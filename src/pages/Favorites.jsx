@@ -62,7 +62,7 @@ export default class Favorites extends Component {
             <span className="big-outlined-circle bottom-left-big-circle" />
             <span className="big-filled-circle top-right" />
           </section>
-          <section className="favoritesMusics">
+          <section className="favoritesMusics myMusics">
             {
               loading ? <Loading /> : (
                 favorites.map((music, index) => (<MusicCard
