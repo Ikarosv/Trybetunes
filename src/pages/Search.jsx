@@ -103,7 +103,7 @@ export default class Search extends Component {
       <div className="pageSearch" data-testid="page-search">
         <Header />
         <section>
-          <div className="searchForm bgGradient">
+          <div className="searchForm horizontalHeader bgGradient">
             <form onSubmit={ this.handleSearch }>
               <label htmlFor="search">
                 {/* eslint-disable-next-line react/jsx-max-depth */}

@@ -4,6 +4,7 @@ import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import '../components/styles/scss/Album.scss';
 
 export default class Album extends Component {
   state = {
@@ -35,23 +36,43 @@ export default class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <section>
-          <h2 data-testid="album-name">{albumInfo.collectionName}</h2>
-          <h3 data-testid="artist-name">{albumInfo.artistName}</h3>
-        </section>
-        <section>
-          {
-            musics.map((music, index) => {
-              const favorite = !!favoritesSongs
-                .find((song) => song.trackId === music.trackId);
+        <section className="albumPage">
+          <section className="horizontalHeader bgGradient">
+            <img
+              className="artistImage"
+              src={ albumInfo.artworkUrl100 }
+              alt={ albumInfo.artistName }
+            />
+            <div>
+              <h2
+                className="albumName"
+                data-testid="album-name"
+              >
+                {albumInfo.collectionName}
 
-              return (<MusicCard
-                key={ music.trackName + index }
-                isFavorite={ favorite }
-                { ...music }
-              />);
-            })
-          }
+              </h2>
+              <h3
+                className="artistName"
+                data-testid="artist-name"
+              >
+                {albumInfo.artistName}
+
+              </h3>
+            </div>
+          </section>
+          <section>
+            {
+              musics.map((music) => {
+                const favorite = !!favoritesSongs
+                  .find((song) => song.trackId === music.trackId);
+                return (<MusicCard
+                  key={ music.trackId }
+                  isFavorite={ favorite }
+                  { ...music }
+                />);
+              })
+            }
+          </section>
         </section>
       </div>
     );

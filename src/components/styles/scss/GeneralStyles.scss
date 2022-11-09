@@ -17,6 +17,16 @@ body {
   background: $bg_gradient;
 }
 
+.horizontalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 234px;
+  position: relative;
+  overflow: hidden;
+}
+
 .h-100 {
   height: 100%;
 }

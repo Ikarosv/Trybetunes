@@ -1,0 +1,30 @@
+.albumPage {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: Epilogue , sans-serif;
+  line-height: 150%;
+  .horizontalHeader {
+    overflow: visible;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 45px;
+    color: white;
+    .artistImage {
+      position: absolute;
+      top: 111px;
+      left: 77px;
+      width: 240px;
+      border-radius: 12px;
+    }
+    .albumName {
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .artistName {
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+
+}
